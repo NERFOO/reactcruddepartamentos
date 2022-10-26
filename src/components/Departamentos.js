@@ -59,6 +59,7 @@ export default class Departamentos extends Component {
                                         <NavLink to={`/details/${dept.numero}/${dept.nombre}/${dept.localidad}`} className="btn btn-success">Details</NavLink>
                                         <NavLink to={"/details/" + dept.numero + "/" + dept.nombre + "/" + dept.localidad} className="btn btn-success">Details</NavLink>
                                         <NavLink to={"/delete/" + dept.numero} className="btn btn-danger">Eliminar</NavLink>
+                                        <NavLink to={"/update/" + dept.numero} className="btn btn-info">Modificar</NavLink>
                                     </td>
                                 </tr>)
                             })
@@ -67,7 +68,5 @@ export default class Departamentos extends Component {
                 </table>
             </div>)
         }
-
-
     }
 }
