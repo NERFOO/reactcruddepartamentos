@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
-import loading from './../assets/images/img1.jpg'
+import loading from './../assets/images/img1.jpg';
 import { NavLink } from 'react-router-dom';
 
 export default class Departamentos extends Component {

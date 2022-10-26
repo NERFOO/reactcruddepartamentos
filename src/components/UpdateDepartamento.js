@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Global from '../Global';
 import { Navigate } from 'react-router-dom';
+import loading from './../assets/images/img1.jpg';
 
 export default class UpdateDepartamento extends Component {
 
@@ -22,7 +23,8 @@ export default class UpdateDepartamento extends Component {
 
         axios.get(url).then(res => {
             this.setState({
-                departamento : res.data
+                departamento : res.data ,
+                status : true
             });
         });
     }
@@ -55,23 +57,29 @@ export default class UpdateDepartamento extends Component {
     }
 
     render() {
-        return (<div>
-            <h1>Update Departamento</h1>
+        if(this.state.status == false) {
+            return (<div>
+                <img src={loading} />
+            </div>)
+        } else {
+            return (<div>
+                <h1>Update Departamento</h1>
 
-            {
-                this.state.statusPut == true &&
-                (<Navigate to="/" />)
-            }
+                {
+                    this.state.statusPut == true &&
+                    (<Navigate to="/" />)
+                }
 
-            <form style={{width:"60vw", margin:"auto"}}>
-                <input type="hidden" defaultValue={this.state.departamento.numero} ref={this.cajaNumeroRef}/>
-                <label>Nombre: </label>
-                <input type="text" defaultValue={this.state.departamento.nombre} className='form-control' ref={this.cajaNombreRef}/>
-                <label>Localidad: </label>
-                <input type="text" defaultValue={this.state.departamento.localidad} className='form-control' ref={this.cajaLocalidadRef}/> <br/>
-                <button className='btn btn-info' onClick={this.updateDepartamento}>Modificar departamento</button>
-            </form>
+                <form style={{width:"60vw", margin:"auto"}}>
+                    <input type="hidden" defaultValue={this.state.departamento.numero} ref={this.cajaNumeroRef}/>
+                    <label>Nombre: </label>
+                    <input type="text" defaultValue={this.state.departamento.nombre} className='form-control' ref={this.cajaNombreRef}/>
+                    <label>Localidad: </label>
+                    <input type="text" defaultValue={this.state.departamento.localidad} className='form-control' ref={this.cajaLocalidadRef}/> <br/>
+                    <button className='btn btn-info' onClick={this.updateDepartamento}>Modificar departamento</button>
+                </form>
 
-        </div>)
+            </div>)
+        }
     }
 }
